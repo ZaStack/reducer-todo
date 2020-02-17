@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const initialState = [{
     item: 'Learn about reducers',
     completed: false,
@@ -16,10 +18,13 @@ export const Reducer = (state, action) => {
                 id: Date.now()
             }
             return [...state, todo]
-
+        case "COMPLETED":
+            return state.map(e => e.id === action.id ? { ...e, completed: !e.completed } : e);
+        case "REMOVE":
+            return state.filter(e => !e.completed);
 
         default:
-            throw state;
+            return state;
     }
     
     

@@ -17,6 +17,13 @@ const TodoForm = () => {
         dispatch({ type: "ADD-TODO", payload: todo})
     }
 
+    const handleClear = e => {
+        e.preventDefault();
+        dispatch({ type: "REMOVE", payload: todo});
+    }
+
+    console.log(state)
+
     return (
         <div className="form">
             <form>
@@ -27,7 +34,7 @@ const TodoForm = () => {
                         onChange={handleChanges}
                 />
                 <button onClick={handleSubmit}>Add</button>
-                <button></button>
+                <button onClick={handleClear}>Clear Completed</button>
             </form>
             <TodoList id={state.id} todo={todo} dispatch={dispatch} state={state}/>
         </div>

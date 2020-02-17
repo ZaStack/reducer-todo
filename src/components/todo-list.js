@@ -1,4 +1,5 @@
 import React from 'react';
+import '../App.css'
 
 const TodoList = (props) => {
     const handleToggle = (id) => {
@@ -9,7 +10,7 @@ const TodoList = (props) => {
         <div>
                 {props.state.map(todo => {
                     return (
-                        <div key={todo.id}>
+                        <div key={todo.id} className={`todo${todo.completed ? " completed" : ""}`} onClick={() => handleToggle(todo.id)}>
                             <p>{todo.item}</p>
                         </div>
                     )
